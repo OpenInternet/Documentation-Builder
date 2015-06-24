@@ -1,6 +1,6 @@
 # Installation Instructions
 
-Currently we have instructions for installing on the Ubuntu, Debian, and Kali-Linux operating-systems.
+Currently we have instructions for installing on the Ubuntu operating-system.
 
 ### Installation Ubuntu
 
