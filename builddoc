@@ -19,54 +19,6 @@ readonly RUN_DIR=$(pwd)
 readonly DOC_MARKDOWN=markdown_test.md
 readonly DOC_HTML=html_test.html
 
-while getopts "vhxs:t:T:d:i:o:" OPTION; do
-    case $OPTION in
-        o)
-            readonly DOC_FILENAME=$OPTARG
-            ;;
-        i)
-            readonly TARGET_DIR=$OPTARG
-            ;;
-        I)
-            indexfile="style.css"
-            ;;
-        h)
-            usage
-            exit 0
-            ;;
-        x)
-            readonly DEBUG='-x'
-            set -x
-            ;;
-        v)
-            readonly VERBOSE=1
-            ;;
-        s)
-            docstyle="$OPTARG"
-            ;;
-        t)
-            readonly THEME_DIR=$OPTARG
-            ;;
-        T)
-            doctheme="$OPTARG"
-            ;;
-    esac
-done
-
-
-if [[ $indexfile == "" ]]; then
-    indexfile="index.md"
-fi
-readonly INDEX_FILE="$indexfile"
-
-if [[ $docstyle == "" ]]; then
-    docstyle="style.css"
-fi
-readonly DOC_STYLE_SHEET="$docstyle"
-if [[ $doctheme == "" ]]; then
-    doctheme="theme.template"
-fi
-readonly DOC_THEME="$doctheme"
 
 
 
@@ -139,6 +91,57 @@ main() {
     build
     clean
 }
+
+
+
+while getopts "vhxs:t:T:d:i:o:" OPTION; do
+    case $OPTION in
+        o)
+            readonly DOC_FILENAME=$OPTARG
+            ;;
+        i)
+            readonly TARGET_DIR=$OPTARG
+            ;;
+        I)
+            indexfile="style.css"
+            ;;
+        h)
+            usage
+            exit 0
+            ;;
+        x)
+            readonly DEBUG='-x'
+            set -x
+            ;;
+        v)
+            readonly VERBOSE=1
+            ;;
+        s)
+            docstyle="$OPTARG"
+            ;;
+        t)
+            readonly THEME_DIR=$OPTARG
+            ;;
+        T)
+            doctheme="$OPTARG"
+            ;;
+    esac
+done
+
+
+if [[ $indexfile == "" ]]; then
+    indexfile="index.md"
+fi
+readonly INDEX_FILE="$indexfile"
+
+if [[ $docstyle == "" ]]; then
+    docstyle="style.css"
+fi
+readonly DOC_STYLE_SHEET="$docstyle"
+if [[ $doctheme == "" ]]; then
+    doctheme="theme.template"
+fi
+readonly DOC_THEME="$doctheme"
 
 
 main
