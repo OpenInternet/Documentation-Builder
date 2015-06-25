@@ -94,7 +94,7 @@ main() {
 
 
 
-while getopts "vhxs:t:T:d:i:o:" OPTION; do
+while getopts "vhxs:t:T:d:i:I:o:" OPTION; do
     case $OPTION in
         o)
             readonly DOC_FILENAME=$OPTARG
@@ -103,7 +103,7 @@ while getopts "vhxs:t:T:d:i:o:" OPTION; do
             readonly TARGET_DIR=$OPTARG
             ;;
         I)
-            indexfile="style.css"
+            indexfile=$OPTARG
             ;;
         h)
             usage
