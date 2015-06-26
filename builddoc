@@ -8,8 +8,8 @@
 #----------------------------------------------------
 
 #exit the script if any statement returns a non-true return value
-set -e
-set -x
+#set -e
+#set -x
 
 
 readonly BUILD_DIRECTORY=$(mktemp -d)
@@ -51,16 +51,21 @@ build() {
 make_markdown() {
     cd "$BUILD_DIRECTORY"/target
     "$PROG_DIR"/modules/markdown-pp/markdown-pp.py "$BUILD_DIRECTORY"/target/"$INDEX_FILE" "$BUILD_DIRECTORY"/"$DOC_MARKDOWN"
-    cd "$BUILD_DIRECTORY"
+    cd "$RUN_DIR"
 }
 
 make_html() {
+    cd "$BUILD_DIRECTORY"/target
     pandoc -s --template="$BUILD_DIRECTORY"/theme/"$DOC_THEME" \
            --to=html5 "$BUILD_DIRECTORY"/"$DOC_MARKDOWN" \
            --output="$BUILD_DIRECTORY"/"$DOC_HTML"
+    cd "$RUN_DIR"
 }
 
 make_pdf() {
+    cd "$BUILD_DIRECTORY"/target
+    #wkhtml creates links starting at the path of the html file
+    cp "$BUILD_DIRECTORY"/"$DOC_HTML" "$BUILD_DIRECTORY"/target/"$DOC_HTML"
     wkhtmltopdf --user-style-sheet "$BUILD_DIRECTORY"/theme/"$DOC_STYLE_SHEET" \
                 --disable-smart-shrinking  \
                 --load-error-handling skip \
@@ -68,7 +73,8 @@ make_pdf() {
                 --footer-center "Page [page] of [toPage]" \
                 --outline \
                 --outline-depth 3 \
-                "$BUILD_DIRECTORY"/"$DOC_HTML" "$RUN_DIR"/"$DOC_FILENAME"
+                "$BUILD_DIRECTORY"/target/"$DOC_HTML" "$RUN_DIR"/"$DOC_FILENAME"
+    cd "$RUN_DIR"
 }
 
 copy_theme() {
