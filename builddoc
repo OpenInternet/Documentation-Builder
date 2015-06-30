@@ -95,12 +95,16 @@ main() {
     copy_theme
     copy_raw
     build
-    clean
+    if [[ $DEBUG != "true" ]]; then
+        clean
+    else
+        echo "Debug mode is activated. The temporary build directory $BUILD_DIRECTORY will not be deleted after building."
+    fi
 }
 
 
 
-while getopts "vhxs:t:T:d:i:I:o:" OPTION; do
+while getopts "vhds:t:T:i:I:o:" OPTION; do
     case $OPTION in
         o)
             readonly DOC_FILENAME=$OPTARG
@@ -115,8 +119,8 @@ while getopts "vhxs:t:T:d:i:I:o:" OPTION; do
             usage
             exit 0
             ;;
-        x)
-            readonly DEBUG='-x'
+        d)
+            readonly DEBUG="true"
             set -x
             ;;
         v)
