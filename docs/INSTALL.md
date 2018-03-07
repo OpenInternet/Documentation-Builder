@@ -21,13 +21,7 @@ git clone --recursive https://github.com/OpenInternet/Documentation-Builder.git
   * Install wkhtmltopdf
 
 ```
-sudo dpkg --install wkhtmltox-[VERSION]_[PLATFORM]-[CPU].deb
-```
-
-  * Install wkhtmltopdf's dependencies [xfonts-75dpi]. *dpkg does not automatically pull in dependencies so we use apt-get to install them.*
-
-```
-sudo apt-get -f install
+sudo apt-get install wkhtmltopdf
 ```
 
   * Install pandoc
