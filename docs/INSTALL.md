@@ -14,7 +14,7 @@ sudo apt-get install git pandoc python-setuptools
 git clone --recursive https://github.com/OpenInternet/Documentation-Builder.git
 ```
 
-  * Download and install [wkhtmltopdf](http://wkhtmltopdf.org/downloads.html) with patched qt:
+  * Download and install [wkhtmltopdf](http://wkhtmltopdf.org/downloads.html) with patched qt (installing from package repositories does not enable all required features)
 
 ```
 wget https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.4/wkhtmltox-0.12.4_linux-generic-amd64.tar.xz
