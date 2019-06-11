@@ -3,10 +3,19 @@
 Currently we have instructions for installing on the Ubuntu operating-system.
 
  * Install Prerequisites
+   * For Python 2:
 
 ```
-sudo apt-get install git pandoc python-setuptools
+sudo apt-get install git pandoc python-setuptools python-pip
+sudo pip install MarkdownPP
 ```
+
+   * For Python 3:
+   
+```
+sudo apt-get install git pandoc python3-setuptools python3-pip
+sudo pip install MarkdownPP
+```   
 
  * Download the Documentation Builder
 
