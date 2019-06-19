@@ -50,7 +50,7 @@ build() {
 
 make_markdown() {
     cd "$BUILD_DIRECTORY"/target
-    "$PROG_DIR"/modules/markdown-pp/markdown-pp.py "$BUILD_DIRECTORY"/target/"$INDEX_FILE" "$BUILD_DIRECTORY"/"$DOC_MARKDOWN"
+    markdown-pp -o "$BUILD_DIRECTORY"/"$DOC_MARKDOWN" "$BUILD_DIRECTORY"/target/"$INDEX_FILE"
     cd "$RUN_DIR"
 }
 
