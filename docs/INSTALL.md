@@ -10,16 +10,16 @@
 	python --version
 	python3 --version
 	```
-	* For Python 2
+	* For Python 3
+	```
+	sudo apt-get install git pandoc python3-setuptools python3-pip
+	sudo pip3 install MarkdownPP
+	``` 
+	* For Python 2 (deprecated)
 	```
 	sudo apt-get install git pandoc python-setuptools python-pip
 	sudo pip install MarkdownPP
 	```
-	* For Python 3
-	```
-	sudo apt-get install git pandoc python3-setuptools python3-pip
-	sudo pip install MarkdownPP
-	``` 
 
  * Download the Documentation Builder
 
@@ -32,7 +32,7 @@
  ```
  wget https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.4/wkhtmltox-0.12.4_linux-generic-amd64.tar.xz
  tar vxf wkhtmltox-0.12.4_linux-generic-amd64.tar.xz 
- cp wkhtmltox/bin/wk* /usr/local/bin/
+ sudo cp wkhtmltox/bin/wk* /usr/local/bin/
  ```
 ## Windows 10
 
